@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Murad Petrosyan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #2E3B4E;
+            color: #D1E8E2;
+            margin: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, #3A506B, #2A3543);
+            color: #D1E8E2;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between; /* Расположение элементов по сторонам */
+            background: linear-gradient(135deg, #3A506B, #2A3543);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            color: #D1E8E2;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        nav a i {
+            margin-right: 5px;
+        }
+
+        nav a:hover {
+            color: #F4A261;
+            transform: scale(1.1);
+            text-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 2rem 0;
+        }
+
+        .about {
+            background: linear-gradient(135deg, #3A506B, #2A3543);
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .about-text {
+            flex: 1;
+            padding-right: 2rem;
+        }
+
+        .about-text h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #D1E8E2;
+        }
+
+        .about-text p {
+            font-size: 1.5rem;
+            line-height: 2;
+            color: #B3C2C5;
+        }
+
+        .about-image {
+            flex: 1;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .portfolio, .contact {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .portfolio h2, .contact h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #D1E8E2;
+            display: inline-block;
+        }
+
+        .portfolio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem; /* Добавлен отступ снизу */
+}
+
+.photo-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 колонки */
+    gap: 1rem; /* Отступы между фото */
+    margin-top: 1rem;
+}
+.photo-box img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.photo-box img:hover {
+    transform: scale(1.05);
+}
+
+
+        @media (max-width: 768px) {
+            .portfolio {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .contact {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-align: left;
+            padding: 2rem;
+            background: linear-gradient(135deg, #3A506B, #2A3543);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-image {
+            flex: 1;
+            margin-right: 2rem;
+        }
+
+        .contact-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-details {
+            flex: 1;
+        }
+
+        .contact-details h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #D1E8E2;
+        }
+
+        .contact-details p {
+            font-size: 1.2rem;
+            color: #B3C2C5;
+        }
+
+        .contact-details .social {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .contact-details .social a {
+            font-size: 1.5rem;
+            color: #D1E8E2;
+            text-decoration: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background: #2A3543;
+            color: #fff;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInFromLeft {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .about-text, .portfolio .photo-box, .contact-details {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .about-image, .portfolio img {
+            animation: slideInFromLeft 1s ease-in-out;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+        }
+
+        .modal .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Murad Petrosyan</h1>
+        <nav>
+            <a href="#about"><i class="fas fa-user"></i> About</a>
+            <a href="#portfolio"><i class="fas fa-briefcase"></i> Photoshoots</a>
+            <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section id="about" class="about">
+            <div class="about-text">
+                <h2>Hello, I am Murad Petrosyan</h2>
+                <p>Experienced in various creative projects, including films and photo shoots. Currently working at Evolution company.</p>
+            </div>
+            <div class="about-image">
+                <img src="img/1.jpg" alt="Murad Petrosyan">
+            </div>
+        </section>
+
+        <section id="portfolio" class="portfolio">
+            <h2 style="text-align: center;">Photoshoots</h2>
+            <div class="photo-row">
+                <div class="photo-box">
+                    <img src="img/2.jpg" alt="Photo 1" onclick="openModal(this)">
+                </div>
+                <div class="photo-box">
+                    <img src="img/3.jpg" alt="Photo 2" onclick="openModal(this)">
+                </div>
+                <div class="photo-box">
+                    <img src="img/4.jpg" alt="Photo 3" onclick="openModal(this)">
+                </div>
+                <div class="photo-box">
+                    <img src="img/5.jpg" alt="Photo 3" onclick="openModal(this)">
+                </div> <div class="photo-box">
+                    <img src="img/6.jpg" alt="Photo 3" onclick="openModal(this)">
+                </div> <div class="photo-box">
+                    <img src="img/7.jpg" alt="Photo 3" onclick="openModal(this)">
+                </div>
+            </div>
+        </section>
+        
+        <div id="modal" class="modal" onclick="closeModal()">
+            <span class="close">&times;</span>
+            <img id="modalImg">
+        </div>
+        
+
+        <section id="contact" class="contact">
+            <div class="contact-image">
+                <img src="img/8.JPG" alt="Contact Image">
+            </div>
+            <div class="contact-details">
+                <h2>CONTACT</h2>
+                <p>Phone: +374 93 157 058</p>
+                <div class="social">
+                    <a href="https://www.instagram.com/p_yan_m?igsh=MWpsZ3djcGIxanp0dg%3D%3D" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/share/1AzaK9TQTv/?mibextid=wwXIfr" target="_blank">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy;by Manvel Xachatryan</p>
+    </footer>
+
+    <!-- Adding Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">    <script>
+        function openModal(img) {
+            document.getElementById("modal").style.display = "flex";
+            document.getElementById("modalImg").src = img.src;
+        }
+        function closeModal() {
+            document.getElementById("modal").style.display = "none";
+        }
+    </script>
+</body>
+</html>
